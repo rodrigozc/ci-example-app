@@ -1,0 +1,37 @@
+# Eclipse artifacts
+
+
+ms-ofertas/.classpath
+ms-ofertas/.project
+ms-ofertas/.settings/
+ms-ofertas/bin/br/com/kroton/api/importacao/ofertas/.class
+ms-ofertas/bin/br/com/kroton/api/importacao/ofertas/.class
+ms-ofertas/.gradle/2.13/taskArtifacts/taskArtifacts.bin
+
+
+/.project
+*.gradle/2.13/taskArtifacts/
+/.classpath
+/.settings
+/.metadata
+/.class
+/.recommenders
+/*.bin
+
+/bin
+/target
+/.git
+RemoteSystemsTempFiles/.project
+.recommenders
+.recommenders/
+
+# Logs
+*.log
+**/logs/
+
+# gradle
+/.gradle
+/build
+
+*.bin
+*.lock

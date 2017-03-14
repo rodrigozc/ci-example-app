@@ -1,0 +1,48 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("se.transmode.gradle:gradle-docker:1.2")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
+
+jar {
+	baseName = 'ci-example-app'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-jersey')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task prepareDocker(type: Copy, dependsOn: build) {
+	from(jar)
+	from('application.properties')
+	from('Dockerfile')
+	into('build/docker/')
+}
+
+task buildDocker(type: Docker, dependsOn: prepareDocker) {
+    push = false
+    applicationName = jar.baseName
+    dockerfile = file('Dockerfile')
+}

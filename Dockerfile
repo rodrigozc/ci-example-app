@@ -7,7 +7,7 @@ WORKDIR /app
 ADD *.jar app.jar
 ADD application.properties application.properties
 
-EXPOSE 9999
+EXPOSE 9595
 
 RUN sh -c 'touch app.jar'
 
